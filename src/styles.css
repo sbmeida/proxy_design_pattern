@@ -1,0 +1,19 @@
+.car-info,
+.message,
+.car-info-form {
+  display: flex;
+  flex-direction: column;
+  background-color: #eeee;
+  border-radius: 10px;
+  max-width: 500px;
+  padding: 20px;
+  margin: 10px auto;
+}
+
+.car-info-form .row {
+  flex-direction: row;
+}
+
+.car-info span {
+  padding: 5px 0;
+}

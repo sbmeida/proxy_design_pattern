@@ -9,13 +9,13 @@
       <meta name="author" content="Content">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="./src/styles.css">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
     </head>
 
     <body>
-        <header>
-            Proxy Design Patterns
-        </header>
         <div class="car-info">
+          Proxy Design Patterns Demo
+          <h2>Car Info</h2>
           <span class="wheels">
             Wheels: <span class="wheels-value"></span>
           </span>
@@ -34,6 +34,7 @@
           </span>
         </div>
         <form class="car-info-form">
+          <h2>Update Car Info</h2>
           <div class="row">
             <label for="updateWheels">Update wheels:</label>
             <input type="number" id="updateWheels" name="updateWheels"></input>
@@ -57,6 +58,6 @@
         </form>
         <button id="submitUpdates" onclick="submitUpdates()">Click me</button>
 
-        <script src="./src/index.ts"></script>
+        <script src="./src/index.js"></script>
     </body>
 </html>

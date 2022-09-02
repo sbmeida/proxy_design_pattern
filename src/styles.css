@@ -1,3 +1,7 @@
+body {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
 .car-info,
 .message,
 .car-info-form {
@@ -10,10 +14,17 @@
   margin: 10px auto;
 }
 
-.car-info-form .row {
-  flex-direction: row;
-}
-
 .car-info span {
   padding: 5px 0;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+label {
+  min-width: 190px;
+  margin: 10px 0;
 }

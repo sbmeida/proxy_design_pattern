@@ -9,11 +9,11 @@ const car = {
 const carProxy = new Proxy(car, {
   get: (obj, prop) => {
     // Proxy validation
-    return !obj[prop] ? console.log(`this property doesn't seem to exist on the target object`) : console.log(`The value of ${prop} is ${obj[prop]}`);
+    return !obj[prop as keyof typeof car] ? console.log(`this property doesn't seem to exist on the target object`) : console.log(`The value of ${String(prop)} is ${obj[prop as keyof typeof car]}`);
   },
-  set: (obj, prop, value) => {
+  set: (obj, prop, value: any) => {
     // Proxy validation
-    console.log(`Changed ${prop} from ${obj[prop]} to ${value}`);
+    console.log(`Changed ${String(prop)} from ${obj[prop as keyof typeof car]} to ${value}`);
     obj[prop] = value;
     return true;
   }
@@ -47,8 +47,8 @@ const submitUpdates = () => {
   const consumptionTypeFieldLength = consumptionTypeField.value.length;
   const transmissionFieldLength = transmissionField.value.length;
 
-  console.log(carProxy.test); // Expect failure
-  console.log(carProxy.color); // Expect value to be red
+  // console.log(carProxy.test); // Expect failure
+  // console.log(carProxy.color); // Expect value to be red
 
   carProxy.wheels = !wheelsFieldLength ? car.wheels : parseFloat(wheelsField.value);
   carProxy.brand = !brandFieldLength ? car.brand : brandField.value;
@@ -58,4 +58,6 @@ const submitUpdates = () => {
   renderLabelValues();
 };
 
-document.getElementById("submitUpdates").onclick = () => submitUpdates();
+const submitChangesButton = document.getElementById("submitUpdates")!;
+
+submitChangesButton.onclick = () => submitUpdates();

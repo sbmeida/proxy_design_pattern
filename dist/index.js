@@ -1,3 +1,4 @@
+"use strict";
 var car = {
     wheels: 4,
     brand: "Toyota",
@@ -8,11 +9,11 @@ var car = {
 var carProxy = new Proxy(car, {
     get: function (obj, prop) {
         // Proxy validation
-        return !obj[prop] ? console.log("this property doesn't seem to exist on the target object") : console.log("The value of " + prop + " is " + obj[prop]);
+        return !obj[prop] ? console.log("this property doesn't seem to exist on the target object") : console.log("The value of " + String(prop) + " is " + obj[prop]);
     },
     set: function (obj, prop, value) {
         // Proxy validation
-        console.log("Changed " + prop + " from " + obj[prop] + " to " + value);
+        console.log("Changed " + String(prop) + " from " + obj[prop] + " to " + value);
         obj[prop] = value;
         return true;
     }
@@ -41,8 +42,8 @@ var submitUpdates = function () {
     var colorFieldLength = colorField.value.length;
     var consumptionTypeFieldLength = consumptionTypeField.value.length;
     var transmissionFieldLength = transmissionField.value.length;
-    console.log(carProxy.test); // Expect failure
-    console.log(carProxy.color); // Expect value to be red
+    // console.log(carProxy.test); // Expect failure
+    // console.log(carProxy.color); // Expect value to be red
     carProxy.wheels = !wheelsFieldLength ? car.wheels : parseFloat(wheelsField.value);
     carProxy.brand = !brandFieldLength ? car.brand : brandField.value;
     carProxy.color = !colorFieldLength ? car.color : colorField.value;
@@ -50,4 +51,6 @@ var submitUpdates = function () {
     carProxy.transmission = !transmissionFieldLength ? car.transmission : transmissionField.value;
     renderLabelValues();
 };
-document.getElementById("submitUpdates").onclick = function () { return submitUpdates(); };
+var submitChangesButton = document.getElementById("submitUpdates");
+submitChangesButton.onclick = function () { return submitUpdates(); };
+//# sourceMappingURL=index.js.map
